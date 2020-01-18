@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap4/bootstrap.min.css') }}"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Assignment 1</title>
+    <title>ระบบจัดเก็บผู้ถูกรางวัลสลากกินแบ่งรัฐบาล</title>
 </head>
 
 <body style="font-family:cursive">
@@ -22,7 +22,7 @@
             <a class="navbar-brand">
                 <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
                     style="vertical-align: middle;border-radius: 50%; margin-right: 15px;">
-                <label style="font-size: larger;font-size: 40px;">523355 Introduction to Blockchain Technology</label>
+                <label style="font-size: larger;font-size: 40px;">ระบบเก็บสลากกินแบ่งรัฐบาล</label>
             </a>
         </div>
         <ul class="navbar-nav mr-auto">
@@ -36,12 +36,10 @@
             <a class="nav-link" href="http://localhost:8080/blocks" style="margin: 20px; font-size: 20px;">Blocks</a>
         </li>
     </ul>
-    <div style="margin-left: 40px;margin-right: 40px; margin-top: 100px; margin-bottom: 100px;">
+    <div style="margin-left: 40px;margin-right: 40px; margin-bottom: 100px;">
         <br><br>
 
-        <p class="lead"> 523355 Introduction to Blockchain Technology Assignment 1 <br>
-            ให้ออกแบบและสร้าง Prototype ที่เหมาะสมในการน า Blockchain มาใช้แทนการเก็บข้อมูลแบบ Centralized
-            Database .</p>
+        <p class="lead">สำหรับเก็บข้อมูลของผู้ถูกรางวัลสลากกินแบ่งรัฐบาล</p>
         <br>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFrom">
             <i class="fas fa-link"></i>Add Bloack
@@ -75,11 +73,15 @@
                             {{ dataId.from_address }} &nbsp; to
                         </span>
                         <span>
-                            {{ dataId.to_address }} &nbsp;
+                            {{ dataId.whom }} &nbsp;
                         </span>
                         <span>
-                            {{ dataId.amount }} &nbsp; bath.
+                            {{ dataId.lotto_number }} &nbsp; bath.
                         </span>
+                        <!-- <span>
+                            {{ dataId.duedate }} &nbsp; bath.
+                        </span> -->
+                        
                         <br>
                         {% endfor %}
                     </td>
@@ -117,13 +119,17 @@
                                 placeholder="from_address">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">to_address</label>
-                            <input type="text" class="form-control" id="to_address" name="to_address"
-                                placeholder="to_address">
+                            <label for="exampleDropdownFormPassword1">whom</label>
+                            <input type="text" class="form-control" id="whom" name="whom"
+                                placeholder="whom">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">amount</label>
-                            <input type="text" class="form-control" id="amount" name="amount" placeholder="amount">
+                            <label for="exampleDropdownFormPassword1">lotto_number</label>
+                            <input type="text" class="form-control" id="lotto_number" name="lotto_number" placeholder="lotto_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">duedate</label>
+                            <input type="text" class="form-control" id="duedate name="duedate" placeholder="duedate">
                         </div>
 
 

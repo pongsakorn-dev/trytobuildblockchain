@@ -87,6 +87,10 @@ def new_Block():
     return redirect("http://localhost:8080/blocks")
 
 
+@app.route("/addnewblock")
+def viewAddnewblock():
+    return render_template('addnewblock.html', blocks=blockchain.blocks)
+
 @app.route("/blocks")
 def viewBlocks():
     return render_template('blocks.html', blocks=blockchain.blocks)

@@ -47,8 +47,7 @@
         <br>
         <br>
 
-
-        <table class="table table-striped">
+        <table class="table table-striped" style="width:50%">
             <thead>
                 <tr>
                     <th scope="col">index</th>
@@ -56,7 +55,6 @@
                     <th scope="col">timestamp</th>
                     <th scope="col">data</th>
                     <th scope="col">previous_hash</th>
-                    <th scope="col">installment</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,10 +75,10 @@
                             {{ dataId.whom }} &nbsp;
                         </span>
                         <span>
-                            {{ dataId.lotto_number }} &nbsp; bath.
+                            {{ dataId.lotto_number }} &nbsp; 
                         </span>
                         <span>
-                            {{ dataId.duedate }} &nbsp; installment.
+                            {{ dataId.duedate }} &nbsp; 
                         </span>
                         
                         <br>
@@ -95,7 +93,6 @@
             </tbody>
         </table>
     </div>
-
 
     <!-- Modal Add BlockChain-->
     <div class="modal fade" id="addFrom" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -115,26 +112,23 @@
 
 
                         <div class="form-group">
-                            <label for="exampleDropdownFormEmail1">from_address</label>
+                            <label for="from_address">from_address</label>
                             <input type="text" class="form-control" id="from_address" name="from_address"
                                 placeholder="from_address">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">whom</label>
+                            <label for="whom">whom</label>
                             <input type="text" class="form-control" id="whom" name="whom"
                                 placeholder="whom">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">lotto_number</label>
+                            <label for="lotto_number">lotto_number</label>
                             <input type="text" class="form-control" id="lotto_number" name="lotto_number" placeholder="lotto_number">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">duedate</label>
-                            <input type="text" class="form-control" id="duedate name="duedate" placeholder="duedate">
+                            <label for="installment">installment</label>
+                            <input type="text" class="form-control" id="duedate" name="duedate" placeholder="duedate">
                         </div>
-
-
-
 
                     </div>
                     <div class="modal-footer">
@@ -150,8 +144,6 @@
     </div>
     <!-- Footer -->
 
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ url_for('static', filename='Bootstrap4/jquery-3.4.1.slim.min.js') }}"
@@ -165,5 +157,10 @@
     </script>
 
 </body>
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+</style>
 
 </html>

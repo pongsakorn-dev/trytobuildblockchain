@@ -56,12 +56,12 @@
                             {{ dataId.whom }} &nbsp;
                         </span>
                         <span>
-                            {{ dataId.lotto_number }} &nbsp; 
+                            {{ dataId.lotto_number }} &nbsp;
                         </span>
                         <span>
-                            {{ dataId.duedate }} &nbsp; 
+                            {{ dataId.duedate }} &nbsp;
                         </span>
-                        
+
                         <br>
                         {% endfor %}
                     </td>
@@ -74,61 +74,61 @@
             </tbody>
         </table>
     </div>
+    <div class="card">
+        <div class="container">
+            <!-- Modal Add BlockChain-->
+            <div class="modal fade" id="addFrom" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <form class="px-4 py-3" action="http://localhost:8080/newBlock/" method="POST">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 30px;">
+                                    <i class="fas fa-dice-d6"></i> &nbsp;Add BlockChain
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="from_address">from_address</label>
+                                    <input type="text" class="form-control" id="from_address" name="from_address"
+                                        placeholder="from_address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="whom">whom</label>
+                                    <input type="text" class="form-control" id="whom" name="whom" placeholder="whom">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lotto_number">lotto_number</label>
+                                    <input type="text" class="form-control" id="lotto_number" name="lotto_number"
+                                        placeholder="lotto_number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="installment">installment</label>
+                                    <input type="text" class="form-control" id="duedate" name="duedate"
+                                        placeholder="duedate">
+                                </div>
 
-    <!-- Modal Add BlockChain-->
-    <div class="modal fade" id="addFrom" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form class="px-4 py-3" action="http://localhost:8080/newBlock/" method="POST">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 30px;">
-                            <i class="fas fa-dice-d6"></i> &nbsp;Add BlockChain
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Add Block</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="modal-body">
-
-
-                        <div class="form-group">
-                            <label for="from_address">from_address</label>
-                            <input type="text" class="form-control" id="from_address" name="from_address"
-                                placeholder="from_address">
-                        </div>
-                        <div class="form-group">
-                            <label for="whom">whom</label>
-                            <input type="text" class="form-control" id="whom" name="whom"
-                                placeholder="whom">
-                        </div>
-                        <div class="form-group">
-                            <label for="lotto_number">lotto_number</label>
-                            <input type="text" class="form-control" id="lotto_number" name="lotto_number" placeholder="lotto_number">
-                        </div>
-                        <div class="form-group">
-                            <label for="installment">installment</label>
-                            <input type="text" class="form-control" id="duedate" name="duedate" placeholder="duedate">
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Block</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-
-
     </div>
+
 
 </body>
 <style>
-    table, th, td {
-      border: 1px solid black;
+    table,
+    th,
+    td {
+        border: 1px solid black;
     }
+
     .button {
         background-color: #BBDED6;
         border: none;

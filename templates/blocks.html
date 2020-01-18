@@ -94,7 +94,7 @@
                         {% for dataId in block.data %}
 
                         <input type="text" class="form-control"
-                            value="{{ dataId.from_address }} to {{ dataId.to_address }}  {{ dataId.amount }} bath."
+                            value="Bought from {{ dataId.from_address }} by {{ dataId.whom }} number is {{ dataId.lotto_number }} installment {{ dataId.duedate }} "
                             aria-describedby="basic-addon3">
                         {% endfor %}
                         {% endif %}
@@ -137,18 +137,22 @@
 
 
                         <div class="form-group">
-                            <label for="exampleDropdownFormEmail1">from_address</label>
+                            <label for="address">from_address</label>
                             <input type="text" class="form-control" id="from_address" name="from_address"
                                 placeholder="from_address">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">to_address</label>
-                            <input type="text" class="form-control" id="to_address" name="to_address"
-                                placeholder="to_address">
+                            <label for="whom">whom</label>
+                            <input type="text" class="form-control" id="whom" name="whom" placeholder="whom">
                         </div>
                         <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">amount</label>
-                            <input type="text" class="form-control" id="amount" name="amount" placeholder="amount">
+                            <label for="lottonumber">lotto_number</label>
+                            <input type="text" class="form-control" id="lotto_number" name="lotto_number"
+                                placeholder="lotto_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="installment">installment</label>
+                            <input type="text" class="form-control" id="duedate" name="duedate" placeholder="duedate">
                         </div>
 
 

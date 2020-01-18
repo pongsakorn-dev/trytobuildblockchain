@@ -64,6 +64,7 @@
                 class="form-control"
                 value="{{ block.hash }}"
                 aria-describedby="basic-addon3"
+                style="width:500px;"
                 disabled
               />
             </div>
@@ -78,6 +79,7 @@
                 class="form-control"
                 value="{{ block.timestamp }}"
                 aria-describedby="basic-addon3"
+                style="width:500px;"
                 disabled
               />
             </div>
@@ -94,6 +96,7 @@
                 class="form-control"
                 value="{{ block.data }}"
                 aria-describedby="basic-addon3"
+                style="width:500px;"
                 disabled
               />
               {% else %} {% for dataId in block.data %}
@@ -103,6 +106,7 @@
                 class="form-control"
                 value="Bought from {{ dataId.from_address }} by {{ dataId.whom }} number is {{ dataId.lotto_number }} installment {{ dataId.duedate }} "
                 aria-describedby="basic-addon3"
+                style="width:500px;"
                 disabled
               />
               {% endfor %} {% endif %}
@@ -118,6 +122,7 @@
                 class="form-control"
                 value="{{ block.previous_hash }}"
                 aria-describedby="basic-addon3"
+                style="width:500px;"
                 disabled
               />
             </div>

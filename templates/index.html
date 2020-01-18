@@ -6,18 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- font-awesome CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome5/all.css') }}">
-    <script defer src="{{ url_for('static', filename='fontawesome5/all.js') }}"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap4/bootstrap.min.css') }}"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>ระบบจัดเก็บผู้ถูกรางวัลสลากกินแบ่งรัฐบาล</title>
+    <title>ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</title>
 </head>
 
-<body style="font-family:cursive">
-    <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #1C2331;color: white;">
+<body style="background-color:#FAE3D9">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #FFB6B9;color: white;">
         <div class="d-flex w-50 order-0">
             <a class="navbar-brand">
                 <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
@@ -25,27 +18,15 @@
                 <label style="font-size: larger;font-size: 40px;">ระบบเก็บสลากกินแบ่งรัฐบาล</label>
             </a>
         </div>
-        <ul class="navbar-nav mr-auto">
-        </ul>
     </nav>
     <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="http://localhost:8080/" style="margin: 20px; font-size: 20px;">Home</a>
-        </li>
+        <br />
         <li class="nav-item ">
-            <a class="nav-link" href="http://localhost:8080/blocks" style="margin: 20px; font-size: 20px;">Blocks</a>
+            <a class="button" href="http://localhost:8080/blocks" style="margin: 20px; font-size: 20px;">Blocks</a>
         </li>
     </ul>
     <div style="margin-left: 40px;margin-right: 40px; margin-bottom: 100px;">
-        <br><br>
-
-        <p class="lead">สำหรับเก็บข้อมูลของผู้ถูกรางวัลสลากกินแบ่งรัฐบาล</p>
-        <br>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFrom">
-            <i class="fas fa-link"></i>Add Bloack
-        </button>
-        <br>
-        <br>
+        <br />
 
         <table class="table table-striped" style="width:50%">
             <thead>
@@ -69,7 +50,7 @@
                     <td>
                         {% for dataId in block.data %}
                         <span>
-                            {{ dataId.from_address }} &nbsp; to
+                            {{ dataId.from_address }} &nbsp; by
                         </span>
                         <span>
                             {{ dataId.whom }} &nbsp;
@@ -142,24 +123,20 @@
 
 
     </div>
-    <!-- Footer -->
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{ url_for('static', filename='Bootstrap4/jquery-3.4.1.slim.min.js') }}"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="{{ url_for('static', filename='Bootstrap4/popper.min.js') }}"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="{{ url_for('static', filename='Bootstrap4/bootstrap.min.js') }}"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
 
 </body>
 <style>
     table, th, td {
       border: 1px solid black;
+    }
+    .button {
+        background-color: #BBDED6;
+        border: none;
+        color: white;
+        padding: 15px 25px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
     }
 </style>
 

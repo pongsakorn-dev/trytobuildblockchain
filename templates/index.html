@@ -13,45 +13,32 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap4/bootstrap.min.css') }}"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Assignment 1 </title>
+    <title>Assignment 1</title>
 </head>
 
 <body style="font-family:cursive">
     <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #1C2331;color: white;">
         <div class="d-flex w-50 order-0">
-            <a class="navbar-brand" href="https://drive.google.com/file/d/1KlDmVZEYAa7U0KMyiriPOzSt2dkRX-nG/view">
-                <img src="{{ url_for('static', filename='Brand/Blockchain.png') }}" width="90" height="90"
+            <a class="navbar-brand">
+                <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
                     style="vertical-align: middle;border-radius: 50%; margin-right: 15px;">
                 <label style="font-size: larger;font-size: 40px;">523355 Introduction to Blockchain Technology</label>
-
             </a>
-
         </div>
         <ul class="navbar-nav mr-auto">
         </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="http://localhost:8080/" style="margin: 20px; font-size: 20px;">Home</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="http://localhost:8080/blocks"
-                    style="margin: 20px; font-size: 20px;">Blocks</a>
-            </li>
-
-
-        </ul>
-        <button data-toggle="modal" data-target="#groupMembers"
-            class="btn btn-outline-success my-2 my-sm-0 order-md-last text-right" type="button"
-            style="margin: 20px; font-size: 20px;">
-            Group Detail
-        </button>
-
-
     </nav>
-
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="http://localhost:8080/" style="margin: 20px; font-size: 20px;">Home</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="http://localhost:8080/blocks" style="margin: 20px; font-size: 20px;">Blocks</a>
+        </li>
+    </ul>
     <div style="margin-left: 40px;margin-right: 40px; margin-top: 100px; margin-bottom: 100px;">
         <br><br>
-        <h1 class="display-4">Hello, BlockChain !</h1>
+
         <p class="lead"> 523355 Introduction to Blockchain Technology Assignment 1 <br>
             ให้ออกแบบและสร้าง Prototype ที่เหมาะสมในการน า Blockchain มาใช้แทนการเก็บข้อมูลแบบ Centralized
             Database .</p>
@@ -161,14 +148,14 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ url_for('static', filename='Bootstrap4/jquery-3.4.1.slim.min.js') }}"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
     <script src="{{ url_for('static', filename='Bootstrap4/popper.min.js') }}"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
     <script src="{{ url_for('static', filename='Bootstrap4/bootstrap.min.js') }}"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
 </body>
 

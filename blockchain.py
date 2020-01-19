@@ -6,12 +6,15 @@ from flask import Flask, render_template, request, redirect
 
 
 class Block:
-    def __init__(self, index, timestamp, data, previous_hash):
+    def __init__(self, index, timestamp, data, previous_hash,hash=''):
         self.index = index
         self.timestamp = timestamp
         self.data = data
         self.previous_hash = previous_hash
-        self.hash = self.generate_hash()
+        if hash == '':
+            self.hash = self.generate_hash()
+        else:
+            self.hash=hash
 
     def generate_hash(self):
         sha = hashlib.sha256()
@@ -52,6 +55,29 @@ class BlockChain():
         self.dataList = []
         self.blocks.append(block)
         self.prev_block = block
+    
+    def isChainValid(self):
+        self.editId = []
+        for index in range(1,len(self.blocks)):
+            currb=Block(self.blocks[index].index ,
+                        self.blocks[index].timestamp ,
+                        self.blocks[index].data ,
+                        self.blocks[index].previous_hash ,
+                        self.blocks[index].hash)
+            prevb=Block(self.blocks[index-1].index ,
+                        self.blocks[index-1].timestamp ,
+                        self.blocks[index-1].data ,
+                        self.blocks[index-1].previous_hash ,
+                        self.blocks[index-1].hash)
+            if currb.hash != currb.generate_hash():
+                self.editId.append(index)
+            if currb.previous_hash != prevb.hash:
+                self.editId.append(index)
+        
+        if len(self.editId) == 0:
+            return "isChainValid"
+        else:
+            return self.editId
 
 
 # -V2 run blockchain in web
@@ -89,6 +115,14 @@ def new_Block():
     return redirect("http://localhost:8080/blocks")
 
 
+@app.route('/editBlock/',methods=['POST'])
+def edit_Block():
+    blockchain.blocks[int(request.form['editIndex'])].data[0]['from_address'] = request.form['editFrom_address']
+    blockchain.blocks[int(request.form['editIndex'])].data[0]['whom'] = request.form['editWhom']
+    blockchain.blocks[int(request.form['editIndex'])].data[0]['lotto_number'] = request.form['editLotto_number']
+    blockchain.blocks[int(request.form['editIndex'])].data[0]['duedate'] = request.form['editDuedate']
+    return redirect("http://localhost:8080/")
+
 @app.route("/addnewblock")
 def viewAddnewblock():
     return render_template('addnewblock.html', blocks=blockchain.blocks)
@@ -96,7 +130,7 @@ def viewAddnewblock():
 
 @app.route("/blocks")
 def viewBlocks():
-    return render_template('blocks.html', blocks=blockchain.blocks)
+    return render_template('blocks.html', blocks=blockchain.blocks,isChainValid=blockchain.isChainValid())
 
 
 @app.route("/")

@@ -5,21 +5,56 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- font-awesome CSS -->
+  <script src="{{ url_for('static', filename='fontawesome5/all.js') }}"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap4/bootstrap.min.css') }}">
 
   <title>ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</title>
+
+  <script type="text/javascript">
+    function getId(element) {
+      
+      var rowId = (element.closest('tr').rowIndex - 1);
+      if (rowId == 0) {
+          document.getElementById("editIndex").value = rowId;
+          document.getElementById("editFrom_address").value = "Genesis block";
+          document.getElementById("editWhom").value = "Genesis block";
+          document.getElementById("editLotto_number").value = "Genesis block";
+          document.getElementById("editDuedate").value = "Genesis block";
+          document.getElementById("editBootton").disabled = true;
+
+      } else {
+
+          var dataIdFrom_address = document.getElementById("dataIdFrom_address" + rowId).innerText;
+          var dataIdWhom = document.getElementById("dataIdWhom" + rowId).innerText;
+          var dataIdLotto_number = document.getElementById("dataIdLotto_number" + rowId).innerText;
+          var dataIdDuedate = document.getElementById("dataIdDuedate" + rowId).innerText;
+
+          document.getElementById("editBootton").disabled = false;
+          document.getElementById("editIndex").value = rowId;
+          document.getElementById("editFrom_address").value = dataIdFrom_address;
+          document.getElementById("editWhom").value = dataIdWhom;
+          document.getElementById("editLotto_number").value = dataIdLotto_number;
+          document.getElementById("editDuedate").value = dataIdDuedate;
+
+      }
+
+    }
+  </script>
 </head>
 
 <body style="background-color:#F7F9F9">
-  <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #5D6D7E ;color: white; text-align: center;">
-    <div class="d-flex w-50 order-0">
-      <a class="navbar-brand">
+  <div class="fixed-top" style="background-color: #5D6D7E ;color: white; text-align: center;">
+    <div>
+      <a>
         <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
           style="vertical-align: middle;border-radius: 50%; margin-right: 15px;" />
         <label style="font-size: larger;font-size: 40px;">ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</label>
       </a>
     </div>
-  </nav>
-  <ul class="navbar-nav" style="text-align: center;">
+  </div>
+  <ul class="" style="text-align: center; margin-top: 100px;">
     <br />
     <a class="button" href="http://localhost:8080/blocks" style="margin: 20px; font-size: 20px;">Blocks</a>
     <a class="button" href="http://localhost:8080/addnewblock" style="margin: 20px; font-size: 20px;">Add new block</a>
@@ -38,7 +73,7 @@
       </thead>
       <tbody>
         {% for block in blocks %}
-        <tr>
+        <tr id="TrId" onclick="getId(this)" data-toggle="modal" data-target="#rowTable" style="cursor: pointer;">
           <th scope="row">{{ block.index }}</th>
           <td>{{ block.hash }}</td>
           <td>{{ block.timestamp }}</td>
@@ -48,16 +83,16 @@
           <td>
             {% for dataId in block.data %}
             <span>
-              {{ dataId.from_address }} &nbsp; by
+              <span id="dataIdFrom_address{{ block.index }}">{{ dataId.from_address }}</span> &nbsp; by
             </span>
             <span>
-              {{ dataId.whom }} &nbsp;
+              <span id="dataIdWhom{{ block.index }}">{{ dataId.whom }}</span> &nbsp;
             </span>
             <span>
-              {{ dataId.lotto_number }} &nbsp;
+              <span id="dataIdLotto_number{{ block.index }}">{{ dataId.lotto_number }}</span> &nbsp;
             </span>
             <span>
-              {{ dataId.duedate }} &nbsp;
+              <span id="dataIdDuedate{{ block.index }}">{{ dataId.duedate }}</span> &nbsp;
             </span>
 
             <br />
@@ -70,20 +105,83 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Modal row table Detail-->
+  <div class="modal fade" id="rowTable" tabindex="-1" role="dialog" aria-labelledby="exampleModalrowTable"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <form class="px-4 py-3" action="http://localhost:8080/editBlock/" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 30px;">
+            &nbsp;Edit BlockChain
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <input id="editIndex" type="hidden" class="form-control" name="editIndex">
+
+            <div class="form-group">
+              <label for="from_address">from_address</label>
+              <input type="text" class="form-control" id="editFrom_address" name="editFrom_address"
+                placeholder="from_address" />
+            </div>
+
+            <div class="form-group">
+              <label for="whom">whom</label>
+              <input type="text" class="form-control" id="editWhom" name="editWhom" placeholder="whom" />
+            </div>
+
+            <div class="form-group">
+              <label for="lotto_number">lotto_number</label>
+              <input type="text" class="form-control" id="editLotto_number" name="editLotto_number"
+                placeholder="lotto_number" />
+            </div>
+
+            <div class="form-group">
+              <label for="installment">installment</label>
+              <input type="text" class="form-control" id="editDuedate" name="editDuedate" placeholder="duedate" />
+            </div>
+          
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="editBootton" style="background-color: #34495E;color: white;" type="submit" class="btn ">Edit Block</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{{ url_for('static', filename='Bootstrap4/jquery-3.4.1.slim.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='Bootstrap4/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='Bootstrap4/bootstrap.min.js') }}"></script>
+
 </body>
 
 <style>
-  table{
+  table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
-  td, th {
+
+  td,
+  th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
   }
-  
+
   tr:nth-child(even) {
     background-color: #dddddd;
   }

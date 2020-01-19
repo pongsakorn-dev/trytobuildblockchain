@@ -5,11 +5,13 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script src="{{ url_for('static', filename='fontawesome5/all.js') }}"></script>
   <title>ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</title>
 </head>
 
 <body style="background-color:#F7F9F9">
-  <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #5D6D7E ;color: white; text-align: center;">
+  <nav class="navbar fixed-top navbar-expand-md navbar-dark "
+    style="background-color: #5D6D7E ;color: white; text-align: center;">
     <div class="d-flex w-50 order-0">
       <a class="navbar-brand">
         <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
@@ -19,71 +21,78 @@
     </div>
   </nav>
   <br />
+
   <ul class="navbar-nav"">
-    <a class="button" href="http://localhost:8080/" style="margin: 20px; font-size: 20px;">Home</a>
+    <a class=" button" href="http://localhost:8080/" style="margin: 20px; font-size: 20px;">Home</a>
     <a class="button" href="http://localhost:8080/addnewblock" style="margin: 20px; font-size: 20px;">Add new block</a>
   </ul>
-  <div style="margin-left: 40px;margin-right: 40px;">
-    <br />
 
-    <div class="row" style="width: max-content;">
-      {% for block in blocks %} {% if block.data=='Genesis block' %}
-      <div style="margin-left: 14px;"></div>
-      {% else %}
-      <div style="padding: auto;">
-        <label style="margin-top: 100px; font-size: 20px;font-weight: 900;">-----</label>
+  <br />
+  <br />
+  <br />
+
+  <div style="width: max-content;">
+    {% for block in blocks %}
+
+    <div style="border: 1px solid #2196F3; margin: 0px;padding: 40px; margin-left: 20px;">
+
+      <div class="card-header">
+        #Block {{ block.index }}
       </div>
-      {% endif %}
-
-      <div class="card " style="width: 40rem;">
-        <div class="card-header">
-          #Block {{ block.index }}
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="width: 90px;">#hash
+            </span>
+          </div>
+          <input type="text" class="form-control" value="{{ block.hash }}" aria-describedby="basic-addon3"
+            style="width:500px;" disabled />
         </div>
-        <div class="card-body">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 90px;">#hash
-              </span>
-            </div>
-            <input type="text" class="form-control" value="{{ block.hash }}" aria-describedby="basic-addon3"
-              style="width:500px;" disabled />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="width: 90px;">#time
+            </span>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 90px;">#time
-              </span>
-            </div>
-            <input type="text" class="form-control" value="{{ block.timestamp }}" aria-describedby="basic-addon3"
-              style="width:500px;" disabled />
+          <input type="text" class="form-control" value="{{ block.timestamp }}" aria-describedby="basic-addon3"
+            style="width:500px;" disabled />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="width: 90px;">#data
+            </span>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 90px;">#data
-              </span>
-            </div>
 
-            {% if block.data=='Genesis block' %}
-            <input type="text" class="form-control" value="{{ block.data }}" aria-describedby="basic-addon3"
-              style="width:500px;" disabled />
-            {% else %} {% for dataId in block.data %}
+          {% if block.data=='Genesis block' %}
+          <input type="text" class="form-control" value="{{ block.data }}" aria-describedby="basic-addon3"
+            style="width:500px;" disabled />
+          {% else %} {% for dataId in block.data %}
 
-            <input type="text" class="form-control"
-              value="Bought from {{ dataId.from_address }} by {{ dataId.whom }} number is {{ dataId.lotto_number }} installment {{ dataId.duedate }} "
-              aria-describedby="basic-addon3" style="width:500px;" disabled />
-            {% endfor %} {% endif %}
+          <input type="text" class="form-control"
+            value="Bought from {{ dataId.from_address }} by {{ dataId.whom }} number is {{ dataId.lotto_number }} installment {{ dataId.duedate }} "
+            aria-describedby="basic-addon3" style="width:500px;" disabled />
+          {% endfor %} {% endif %}
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" style="width: 90px;">#pv_hash
+            </span>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 90px;">#pv_hash
-              </span>
-            </div>
-            <input type="text" class="form-control" value="{{ block.previous_hash }}" aria-describedby="basic-addon3"
-              style="width:500px;" disabled />
-          </div>
+          <input type="text" class="form-control" value="{{ block.previous_hash }}" aria-describedby="basic-addon3"
+            style="width:500px;" disabled />
         </div>
       </div>
-      {% endfor %}
+
     </div>
+    <div style="position: relative;left: 500px;bottom:130px; margin: 0;">
+      {% if isChainValid[0]==block.index or isChainValid[1]==block.index or isChainValid[2]==block.index or isChainValid[3]==block.index or isChainValid[4]==block.index or isChainValid[5]==block.index or isChainValid[6]==block.index or isChainValid[7]==block.index or isChainValid[8]==block.index or isChainValid[9]==block.index or isChainValid[10]==block.index or isChainValid[11]==block.index or isChainValid[12]==block.index or isChainValid[13]==block.index or isChainValid[14]==block.index or isChainValid[15]==block.index or isChainValid[16]==block.index %}
+      <i class="fas fa-times" style="font-size: 90px; color: #E74C3C;"></i>
+      {% else %}
+      <i class="fas fa-check" style="font-size: 90px; color: #28B463;"></i>
+      {% endif %}
+    </div>
+
+    {% endfor %}
+
   </div>
 </body>
 <style>

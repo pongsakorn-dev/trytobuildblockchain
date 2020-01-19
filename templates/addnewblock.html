@@ -9,21 +9,12 @@
 </head>
 
 <body style="background-color:#FAE3D9">
-  <nav
-    class="navbar fixed-top navbar-expand-md navbar-dark "
-    style="background-color: #FFB6B9;color: white;"
-  >
+  <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #FFB6B9;color: white;">
     <div class="d-flex w-50 order-0">
       <a class="navbar-brand">
-        <img
-          src="{{ url_for('static', filename='Brand/Meow.jpg') }}"
-          width="90"
-          height="90"
-          style="vertical-align: middle;border-radius: 50%; margin-right: 15px;"
-        />
-        <label style="font-size: larger;font-size: 40px;"
-          >ระบบเก็บสลากกินแบ่งรัฐบาล</label
-        >
+        <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
+          style="vertical-align: middle;border-radius: 50%; margin-right: 15px;" />
+        <label style="font-size: larger;font-size: 40px;">ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</label>
       </a>
     </div>
   </nav>
@@ -38,69 +29,34 @@
   <!-- add new block -->
   <div class="card" style="margin-left: 40px;margin-right: 40px;">
     <div class="container">
-      <div
-        class="modal fade"
-        id="addFrom"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="addFrom" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <form
-              class="px-4 py-3"
-              action="http://localhost:8080/newBlock/"
-              method="POST"
-            >
+            <form class="px-4 py-3" action="http://localhost:8080/newBlock/" method="POST">
               <div class="modal-header">
-                <h5 class="modal-title"
-                  id="exampleModalLongTitle"
-                  style="font-size: 30px;"
-                >
-                  <i class="fas fa-dice-d6" ></i> &nbsp;Add BlockChain
+                <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 30px;">
+                  <i class="fas fa-dice-d6"></i> &nbsp;Add BlockChain
                 </h5>
               </div>
               <div class="modal-body">
                 <div class="form-group">
                   <label for="from_address">from_address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="from_address"
-                    name="from_address"
-                    placeholder="from_address"
-                  />
+                  <input type="text" class="form-control" id="from_address" name="from_address"
+                    placeholder="from_address" />
                 </div>
                 <div class="form-group">
                   <label for="whom">whom</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="whom"
-                    name="whom"
-                    placeholder="whom"
-                  />
+                  <input type="text" class="form-control" id="whom" name="whom" placeholder="whom" />
                 </div>
                 <div class="form-group">
                   <label for="lotto_number">lotto_number</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="lotto_number"
-                    name="lotto_number"
-                    placeholder="lotto_number"
-                  />
+                  <input type="text" class="form-control" id="lotto_number" name="lotto_number"
+                    placeholder="lotto_number" />
                 </div>
                 <div class="form-group">
                   <label for="installment">installment</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="duedate"
-                    name="duedate"
-                    placeholder="duedate"
-                  />
+                  <input type="text" class="form-control" id="duedate" name="duedate" placeholder="duedate" />
                 </div>
               </div>
               <br />

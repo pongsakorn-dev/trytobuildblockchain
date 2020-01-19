@@ -1,115 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <title>ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</title>
-  </head>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <body style="background-color:#FAE3D9">
-    <nav
-      class="navbar fixed-top navbar-expand-md navbar-dark "
-      style="background-color: #FFB6B9;color: white;"
-    >
-      <div class="d-flex w-50 order-0">
-        <a class="navbar-brand">
-          <img
-            src="{{ url_for('static', filename='Brand/Meow.jpg') }}"
-            width="90"
-            height="90"
-            style="vertical-align: middle;border-radius: 50%; margin-right: 15px;"
-          />
-          <label style="font-size: larger;font-size: 40px;"
-            >ระบบเก็บสลากกินแบ่งรัฐบาล</label
-          >
-        </a>
-      </div>
-    </nav>
-    <ul class="navbar-nav">
-      <br />
-      <li class="nav-item ">
-        <a
-          class="button"
-          href="http://localhost:8080/blocks"
-          style="margin: 20px; font-size: 20px;"
-          >Blocks</a
-        >
-        <a
-          class="button"
-          href="http://localhost:8080/addnewblock"
-          style="margin: 20px; font-size: 20px;"
-          >Add new block</a
-        >
-      </li>
-    </ul>
-    <br />
-    <div style="margin-left: 40px;margin-right: 40px; margin-bottom: 100px;">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">index</th>
-            <th scope="col">hash</th>
-            <th scope="col">timestamp</th>
-            <th scope="col">data</th>
-            <th scope="col">previous_hash</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for block in blocks %}
-          <tr>
-            <th scope="row">{{ block.index }}</th>
-            <td>{{ block.hash }}</td>
-            <td>{{ block.timestamp }}</td>
-            {% if block.data=='Genesis block' %}
-            <td>{{ block.data }}</td>
-            {% else %}
-            <td>
-              {% for dataId in block.data %}
-              <span>
-                {{ dataId.from_address }} &nbsp; by
-              </span>
-              <span>
-                {{ dataId.whom }} &nbsp;
-              </span>
-              <span>
-                {{ dataId.lotto_number }} &nbsp;
-              </span>
-              <span>
-                {{ dataId.duedate }} &nbsp;
-              </span>
+  <title>ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</title>
+</head>
 
-              <br />
-              {% endfor %}
-            </td>
-            {% endif %}
-            <td>{{ block.previous_hash }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+<body style="background-color:#FAE3D9">
+  <nav class="navbar fixed-top navbar-expand-md navbar-dark " style="background-color: #FFB6B9;color: white;">
+    <div class="d-flex w-50 order-0">
+      <a class="navbar-brand">
+        <img src="{{ url_for('static', filename='Brand/Meow.jpg') }}" width="90" height="90"
+          style="vertical-align: middle;border-radius: 50%; margin-right: 15px;" />
+        <label style="font-size: larger;font-size: 40px;">ระบบจัดเก็บประวัติการซื้อสลากกินแบ่งรัฐบาล</label>
+      </a>
     </div>
-  </body>
+  </nav>
+  <ul class="navbar-nav">
+    <br />
+    <li class="nav-item ">
+      <a class="button" href="http://localhost:8080/blocks" style="margin: 20px; font-size: 20px;">Blocks</a>
+      <a class="button" href="http://localhost:8080/addnewblock" style="margin: 20px; font-size: 20px;">Add new
+        block</a>
+    </li>
+  </ul>
+  <br />
+  <div style="margin-left: 40px;margin-right: 40px; margin-bottom: 100px;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">index</th>
+          <th scope="col">hash</th>
+          <th scope="col">timestamp</th>
+          <th scope="col">data</th>
+          <th scope="col">previous_hash</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for block in blocks %}
+        <tr>
+          <th scope="row">{{ block.index }}</th>
+          <td>{{ block.hash }}</td>
+          <td>{{ block.timestamp }}</td>
+          {% if block.data=='Genesis block' %}
+          <td>{{ block.data }}</td>
+          {% else %}
+          <td>
+            {% for dataId in block.data %}
+            <span>
+              {{ dataId.from_address }} &nbsp; by
+            </span>
+            <span>
+              {{ dataId.whom }} &nbsp;
+            </span>
+            <span>
+              {{ dataId.lotto_number }} &nbsp;
+            </span>
+            <span>
+              {{ dataId.duedate }} &nbsp;
+            </span>
 
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
+            <br />
+            {% endfor %}
+          </td>
+          {% endif %}
+          <td>{{ block.previous_hash }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
 
-    .button {
-      background-color: #bbded6;
-      border: none;
-      color: white;
-      padding: 15px 25px;
-      text-align: center;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+
+  .button {
+    background-color: #bbded6;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+
 </html>

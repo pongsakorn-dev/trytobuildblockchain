@@ -1,4 +1,6 @@
 import hashlib
+import json
+import copy
 from datetime import datetime as date
 from flask import Flask, render_template, request, redirect
 
@@ -90,6 +92,7 @@ def new_Block():
 @app.route("/addnewblock")
 def viewAddnewblock():
     return render_template('addnewblock.html', blocks=blockchain.blocks)
+
 
 @app.route("/blocks")
 def viewBlocks():
